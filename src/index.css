@@ -1,13 +1,149 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app::before {
+  content: "";
+  background: linear-gradient(
+      rgba(155, 174, 214, 0.232),
+      rgba(61, 66, 104, 0.269)
+    ),
+    url("./images/bg_weather.jpeg") no-repeat center center/cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.container {
+  max-width: 1380px;
+  padding: 0 20px;
+  margin: auto;
+}
+
+.input-field {
+  position: relative;
+  max-width: 480px;
+  padding: 2rem 0;
+  margin: auto;
+}
+
+.input-field input {
+  width: 100%;
+  font-size: 1.2rem;
+  color: #336fb4;
+  border-color: #336fb4;
+  padding: 0.7rem 2px;
+  margin: 0 0 10px;
+}
+
+.input-field input,
+.input-field input:focus {
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  background: transparent;
+  outline: none;
+}
+
+.input-field input:focus {
+  color: #dbe8ff;
+  border-color: #dbe8ff;
+  transition: all 0.5s ease;
+}
+
+.input-field input::placeholder {
+  color: #336fb4;
+}
+
+.input-field input:focus::placeholder {
+  color: #dbe8ff;
+  transition: color 0.5s ease;
+}
+
+.error-msg {
+  position: absolute;
+  left: 0;
+  bottom: 16px;
+  color: #a8ceff;
+  text-align: left;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  gap: 75px;
+}
+
+.city {
+  font-size: 3rem;
+  font-style: oblique;
+  color: #ffff;
+  text-align: center;
+}
+
+.temp {
+  font-size: 7rem;
+  color: #ffff;
+  text-align: center;
+}
+
+.description {
+  font-size: 2rem;
+  color: #ffff;
+  text-align: center;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.additional-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  color: #ffff;
+  background: #5995d95e;
+  border-radius: 20px;
+  padding: 20px;
+  gap: 40px;
+}
+
+.additional-info p {
+  text-align: center;
+}
+
+.additional-data {
+  font-size: 1.35rem;
+}
+
+@media (min-width: 768px) {
+  .input-field {
+    margin: 0;
+  }
+
+  .weather-info {
+    height: 68vh;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .main-info {
+    align-self: flex-end;
+  }
+
+  .additional-info {
+    height: 68vh;
+    align-self: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 5vh;
+  }
 }
