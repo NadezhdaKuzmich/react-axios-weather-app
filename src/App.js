@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
@@ -8,6 +8,18 @@ function App() {
 
   const key = "48bc45b5b2e0f7c5e3582546ec5bdd92";
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${town}&units=metric&appid=${key}`;
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?q=odesa&units=metric&appid=${key}`
+      )
+      .then((response) => setData(response.data))
+      .catch((e) => {
+        setError("You entered the wrong city name");
+      });
+    setTown("");
+  }, []);
 
   const serchWeather = (e) => {
     if (e.key === "Enter") {
